@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {filterDuplicateId, getCurrentTime, randomId} from "./utils";
-// // eslint-disable-next-line no-unused-vars
-// import adapter from 'webrtc-adapter';
+// eslint-disable-next-line no-unused-vars
+import adapter from 'webrtc-adapter';
 import {ALL_USER_IN_ROOM} from "./config";
 
 const myWebSocket = new WebSocket('wss://' + window.location.hostname + ':8443');
@@ -10,7 +10,7 @@ const user = storedUser?storedUser:{id:randomId()};
 if(!storedUser) localStorage.setItem("user", JSON.stringify(user));
 
 const roomId = "12345-6789-abcd-efgh";
-const initRoom = {id:roomId, created:getCurrentTime(), owner: {id:7240424}, users:[]};
+const initRoom = {id:roomId, created:getCurrentTime(), owner: null, users:[]};
 initRoom.users.push(user);
 
 export default function Room(){
